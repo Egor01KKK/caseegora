@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
-  Menu, X, ArrowRight, ArrowUpRight, Check, Zap, Database, TrendingUp, Code, Layout, Smartphone, Globe, ShieldCheck, Target, Users, MessageSquare, Send, Loader2, Hotel, Bed, Key, MapPin, Utensils, Wine, Car, Navigation, Plane, Languages
+  Menu, X, ArrowRight, ArrowUpRight, Check, Zap, Database, TrendingUp, Code, Layout, Smartphone, Globe, ShieldCheck, Target, Users, MessageSquare, Send, Loader2, Hotel, Bed, Key, MapPin, Utensils, Wine, Car, Navigation, Plane, Languages, Mail, Linkedin, Download
 } from 'lucide-react';
 
 // --- GEMINI API CONFIGURATION ---
@@ -49,7 +49,6 @@ const TRANSLATIONS = {
     theProblem: 'THE PROBLEM',
     projectGoals: 'PROJECT GOALS',
     deliveryProcess: 'DELIVERY PROCESS',
-    stakeholderEngagement: 'STAKEHOLDER ENGAGEMENT',
     results: 'RESULTS',
     businessImpact: 'Business Impact',
     technicalMetrics: 'Technical Metrics',
@@ -95,8 +94,7 @@ const TRANSLATIONS = {
     contribution: 'Вклад',
     theProblem: 'ПРОБЛЕМА',
     projectGoals: 'ЦЕЛИ ПРОЕКТА',
-    deliveryProcess: 'ПРОЦЕСС РЕАЛИЗАЦИИ',
-    stakeholderEngagement: 'РАБОТА СО СТЕЙКХОЛДЕРАМИ',
+    deliveryProcess: 'ЭТАПЫ РАБОТ',
     results: 'РЕЗУЛЬТАТЫ',
     businessImpact: 'Бизнес-эффект',
     technicalMetrics: 'Технические метрики',
@@ -636,14 +634,7 @@ const getDATA = (lang) => {
         ]
       },
 
-      // 6. STAKEHOLDERS
-      stakeholder: {
-        desc: isRu
-          ? "Я координировал команду из 10 человек по дизайну, разработке, QA и аналитике, держа клиента в курсе прогресса через еженедельные демо в Figma и структурированные сессии обратной связи. Это снизило расползание scope и обеспечило гладкую поставку."
-          : "I coordinated a 10-person team across design, development, QA, and analytics while keeping the client aligned on progress through weekly Figma demos and structured feedback sessions. This reduced scope creep and ensured smooth delivery."
-      },
-
-      // 7. RESULTS
+      // 6. RESULTS
       results: {
         desc: isRu
           ? "Консолидированная платформа обеспечила немедленную экономию операционных расходов и долгосрочную стратегическую ценность."
@@ -842,12 +833,7 @@ const getDATA = (lang) => {
             ]
         },
 
-        // 6. STAKEHOLDER ENGAGEMENT
-        stakeholder: {
-            desc: "Managing client expectations was the hardest part. I facilitated 'Backlog Surgery' workshops, using Impact/Effort matrices to convince stakeholders to cut 30% of 'nice-to-have' features in exchange for a guaranteed launch date."
-        },
-
-        // 7. RESULTS
+        // 6. RESULTS
         results: {
           desc: "The platform launched in 1.5 months instead of 3 — a 50% faster delivery. Here's what happened next:",
           businessImpact: [
@@ -888,13 +874,13 @@ const getDATA = (lang) => {
         id: 'deluxe-limo',
         slug: 'deluxe-limo',
         title: "Deluxe Limo Italy",
-        subtitle: "Premium Ground Transportation Platform",
+        subtitle: isRu ? "Платформа премиум-трансферов" : "Premium Ground Transportation Platform",
         tags: ["B2B"],
 
-        heroTitle: "PREMIUM GROUND TRANSPORTATION PLATFORM",
+        heroTitle: isRu ? "ПЛАТФОРМА ПРЕМИУМ-ТРАНСФЕРОВ" : "PREMIUM GROUND TRANSPORTATION PLATFORM",
         role: "Technical Project Manager",
-        timeline: "Ongoing (3 months major phase)",
-        team: "10 Specialists",
+        timeline: isRu ? "Ongoing (основная фаза: 3 месяца)" : "Ongoing (3 months major phase)",
+        team: isRu ? "10 человек (4 разработчика, 2 QA, 1 аналитик, 1 дизайнер, 1 PM, 1 sales/ops)" : "10 Specialists",
 
         visuals: {
             hero: <ScreenMobile />,
@@ -903,20 +889,30 @@ const getDATA = (lang) => {
         },
 
         summary: {
-            desc: "Deluxe Limo Italy provides premium transfers across Italy, targeting affluent Italian-American travelers and B2B partners (travel agencies, hotels). When I joined, the business relied on manual lead processing — every booking required back-and-forth emails, manual payment collection, and high abandonment rates due to slow response times. I led the development of an automated booking engine with integrated CRM automation, transforming a manual sales process into a scalable, conversion-optimized platform. The result: higher conversion rates, recovered abandoned bookings, and a foundation for B2B expansion.",
-            contribution: "I managed end-to-end delivery — product strategy, technical architecture, CRM automation, and quality assurance. The platform now handles B2C bookings automatically and supports B2B partners with dedicated dashboards and NET30 payment terms.",
+            desc: isRu
+              ? "Deluxe Limo Italy — сервис премиальных трансферов по Италии для состоятельных итало-американских туристов и B2B-клиентов (турагентства, отели). Когда я пришёл в проект, весь бизнес работал вручную — каждый заказ обрабатывался по email, оплата собиралась через счета, из-за медленного ответа клиенты уходили к конкурентам. Я запустил автоматизированную систему бронирования с интеграцией в CRM, которая превратила ручной процесс в масштабируемую платформу. Результат: конверсия выросла, брошенные заказы начали возвращаться, появился фундамент для B2B-расширения."
+              : "Deluxe Limo Italy provides premium transfers across Italy, targeting affluent Italian-American travelers and B2B partners (travel agencies, hotels). When I joined, the business relied on manual lead processing — every booking required back-and-forth emails, manual payment collection, and high abandonment rates due to slow response times. I led the development of an automated booking engine with integrated CRM automation, transforming a manual sales process into a scalable, conversion-optimized platform. The result: higher conversion rates, recovered abandoned bookings, and a foundation for B2B expansion.",
+            contribution: isRu
+              ? "Я управлял всем — продуктовая стратегия, архитектура, интеграция CRM, контроль качества. Сейчас платформа обрабатывает B2C-заказы автоматически и поддерживает B2B-партнёров через отдельные личные кабинеты с оплатой по счёту."
+              : "I managed end-to-end delivery — product strategy, technical architecture, CRM automation, and quality assurance. The platform now handles B2C bookings automatically and supports B2B partners with dedicated dashboards and NET30 payment terms.",
             metrics: [
-                { val: "+62%", label: "Conversion Rate Increase" },
-                { val: "90%", label: "Bookings Automated" },
-                { val: "18%", label: "Abandoned Cart Recovery" },
-                { val: "-31%", label: "Mobile Bounce Rate" },
-                { val: "-60%", label: "QA Regression Time" }
+                { val: "+62%", label: isRu ? "Рост конверсии" : "Conversion Rate Increase" },
+                { val: "90%", label: isRu ? "Заказов обрабатываются автоматически" : "Bookings Automated" },
+                { val: "18%", label: isRu ? "Возврат брошенных корзин" : "Abandoned Cart Recovery" },
+                { val: "-31%", label: isRu ? "Снижение Bounce Rate на мобильных" : "Mobile Bounce Rate" },
+                { val: "-60%", label: isRu ? "Сокращение времени QA на регрессию" : "QA Regression Time" }
             ]
         },
 
         problem: {
-          desc: "Before the booking engine, Deluxe Limo operated like a traditional concierge service — high-touch, manual, unscalable.",
-          challenges: [
+          desc: isRu ? "До автоматизации Deluxe Limo работал как консьерж-сервис — персонализированно, вручную, без возможности масштабирования." : "Before the booking engine, Deluxe Limo operated like a traditional concierge service — high-touch, manual, unscalable.",
+          challenges: isRu ? [
+            "Всё вручную = клиенты уходят. Сайт собирал заявки через форму, дальше — email-переписка. Sales отправляли коммерческое предложение, согласовывали цену, высылали счёт, ждали оплату. На каждый заказ уходило 30–40 минут. Из-за медленного ответа 20–30% клиентов уходили — они бронировали у конкурентов с мгновенным подтверждением.",
+            "Не было данных, где клиенты отваливаются. Sales не понимали, на каком этапе теряются клиенты. Они видели цену и уходили? Заполняли форму и исчезали? Получали КП и не отвечали? Без аналитики работали вслепую.",
+            "QA выгорал на регрессии. Первые разработчики писали код без архитектуры (SOLID не использовали, модули не разделяли). Каждая новая фича рисковала сломать существующий функционал. QA тратил 80% времени на регрессию вместо тестирования новых фич.",
+            "Мобилка работала плохо. 60% трафика — мобильные, но bounce rate на мобилках был 58%. Причины: медленная загрузка (PageSpeed 42), мелкие кнопки (38px вместо 48px для тач-экранов), перегруженный интерфейс.",
+            "B2B работал через жопу. Турагентства хотели заказывать трансферы для клиентов, но не было личного кабинета. Приходилось писать email или звонить — узкое место для роста партнёрств."
+          ] : [
             "Manual Booking Process = High Abandonment: The existing website collected leads via forms, but every booking required manual processing: sales team emailed quotes, negotiated pricing, sent invoices, and waited for bank transfers. Each booking took 30–40 minutes of staff time. Slow response times led to 20–30% abandonment — users would inquire but book with competitors who offered instant confirmation.",
             "No Visibility into Drop-Off Points: The sales team had no data on where users abandoned the process. Did they leave after seeing the price? After filling out the form? After receiving the quote? Without analytics, we were flying blind.",
             "QA Burnout from Regression Testing: The original dev team had no architectural discipline (SOLID principles ignored, no modular structure). Every new feature risked breaking existing functionality. QA spent 80% of their time on regression testing instead of validating new features.",
@@ -926,8 +922,14 @@ const getDATA = (lang) => {
         },
 
         goals: {
-            desc: "The client's directive: 'Build an automated booking engine that replaces manual workflows and scales to handle 10x the current volume.'",
-            points: [
+            desc: isRu ? "Клиент хотел: «Автоматизировать процесс так, чтобы мы могли обрабатывать в 10 раз больше заказов без увеличения штата»." : "The client's directive: 'Build an automated booking engine that replaces manual workflows and scales to handle 10x the current volume.'",
+            points: isRu ? [
+                "Автоматизировать 90%+ заказов — От выбора маршрута до подтверждения оплаты без участия человека",
+                "Внедрить CRM-автоматизацию — Возвращать брошенные корзины через email/SMS",
+                "Создать B2B-портал — Дать агентствам возможность бронировать массово, работать по счетам",
+                "Улучшить мобилку — Снизить bounce rate, оптимизировать под touch, ускорить загрузку",
+                "Внедрить автотесты — Снизить нагрузку на QA и убрать регрессии"
+            ] : [
                 "Automate 90%+ of bookings — From route selection to payment confirmation, zero human intervention for standard bookings",
                 "Integrate CRM automation — Recover abandoned carts with intelligent email/SMS drip campaigns",
                 "Build B2B portal — Allow agencies to book in bulk, manage clients, and access NET30 payment terms",
@@ -940,49 +942,81 @@ const getDATA = (lang) => {
           steps: [
             {
               number: "01",
-              title: "Automated Booking Engine (B2C)",
-              challenge: "Transitioning from a manual lead-capture form to a fully automated booking flow without losing the premium, concierge-style brand positioning.",
-              whatIDid: "Booking flow redesign: Step 1: Route Selection — Users enter pickup/drop-off locations with Google Places autocomplete (reduces friction, auto-fills addresses). Step 2: Vehicle Selection — Display available vehicles (sedan, SUV, van) with real-time pricing based on route distance and duration. Step 3: Add-Ons — Users select premium services (child seats, champagne, Wi-Fi, meet & greet signage). Step 4: Instant Payment — Stripe integration for immediate booking confirmation (no email back-and-forth). Dynamic pricing engine: Price calculated in real-time based on route, vehicle type, and add-ons. Users see transparent, upfront pricing — no hidden fees, no surprises. Confirmation automation: After payment, users receive instant email confirmation with booking details, driver info (assigned 24h before pickup), and cancellation policy. Key Decision: We built two separate flows — B2C (instant booking + payment) and B2B (agency dashboard with NET30 terms, bulk CSV upload for 10+ transfers, and commission tracking). This allowed us to serve both markets without compromising UX for either.",
-              outcome: "90% of bookings now process automatically. Sales team freed from repetitive data entry and payment collection — they now focus on B2B partnerships and VIP client relationships."
+              title: isRu ? "Автоматическая система бронирования (B2C)" : "Automated Booking Engine (B2C)",
+              challenge: isRu
+                ? "Перейти от ручного сбора заявок к полностью автоматической системе без потери премиального имиджа бренда."
+                : "Transitioning from a manual lead-capture form to a fully automated booking flow without losing the premium, concierge-style brand positioning.",
+              whatIDid: isRu
+                ? "Новый процесс бронирования: Шаг 1: Выбор маршрута. Пользователи вводят точки подачи/высадки с автодополнением Google Places. Шаг 2: Выбор машины. Показываем доступные варианты (седан, внедорожник, микроавтобус) с ценой в реальном времени. Шаг 3: Дополнительные услуги. Выбор опций: детские кресла, шампанское, Wi-Fi, табличка для встречи. Шаг 4: Мгновенная оплата. Интеграция со Stripe, подтверждение без email-переписки. Прозрачное ценообразование: Цена считается сразу на основе маршрута, типа машины и доп. услуг. Пользователь видит финальную цену заранее без скрытых комиссий. Автоматическое подтверждение: После оплаты — мгновенное письмо с деталями заказа, информацией о водителе (назначается за 24 часа до подачи) и условиями отмены. Ключевое решение: Сделали два отдельных flow — B2C (мгновенное бронирование + оплата) и B2B (личный кабинет с оплатой по счёту, массовая загрузка CSV для 10+ трансферов, отслеживание комиссий). Это позволило работать с обоими рынками без ущерба для UX."
+                : "Booking flow redesign: Step 1: Route Selection — Users enter pickup/drop-off locations with Google Places autocomplete (reduces friction, auto-fills addresses). Step 2: Vehicle Selection — Display available vehicles (sedan, SUV, van) with real-time pricing based on route distance and duration. Step 3: Add-Ons — Users select premium services (child seats, champagne, Wi-Fi, meet & greet signage). Step 4: Instant Payment — Stripe integration for immediate booking confirmation (no email back-and-forth). Dynamic pricing engine: Price calculated in real-time based on route, vehicle type, and add-ons. Users see transparent, upfront pricing — no hidden fees, no surprises. Confirmation automation: After payment, users receive instant email confirmation with booking details, driver info (assigned 24h before pickup), and cancellation policy. Key Decision: We built two separate flows — B2C (instant booking + payment) and B2B (agency dashboard with NET30 terms, bulk CSV upload for 10+ transfers, and commission tracking). This allowed us to serve both markets without compromising UX for either.",
+              outcome: isRu
+                ? "90% заказов обрабатываются автоматически. Sales освобождён от рутины — теперь фокусируются на B2B-партнёрствах и VIP-клиентах."
+                : "90% of bookings now process automatically. Sales team freed from repetitive data entry and payment collection — they now focus on B2B partnerships and VIP client relationships."
             },
             {
               number: "02",
-              title: "CRM Automation & Abandoned Cart Recovery",
-              challenge: "Yandex Metrica data showed 45% of users who started the booking flow abandoned before payment. We needed to recover these leads without manual sales follow-up.",
-              whatIDid: "Integrated Zoho CRM with the booking platform to track user behavior and trigger automated campaigns: Drip Campaign 1: Route Entered, No Vehicle Selected — Trigger: User entered route but left site. Action: Email sent 15 minutes later — 'Complete your booking and save time'. Drip Campaign 2: Vehicle Selected, No Payment — Trigger: User selected vehicle but didn't proceed to payment. Action: Email sent 30 minutes later + 10% discount code + SMS reminder. Drip Campaign 3: Payment Page Abandoned — Trigger: User reached payment page but didn't complete transaction. Action: Email sent 1 hour later with live chat link for support. Segmentation logic: High-value routes (airport transfers, multi-day trips) received phone follow-up in addition to email. Low-value routes got email-only sequences to optimize sales team time. Key Decision: We A/B tested discount thresholds — 5%, 10%, 15% — and found that 10% was the sweet spot (higher recovery rate without eroding margins). We also tested SMS timing and found that immediate SMS for high-value bookings had 2x higher response rates than delayed follow-up.",
-              outcome: "18% abandoned cart recovery rate. Estimated $180k/year in recovered revenue from users who would have otherwise booked with competitors."
+              title: isRu ? "CRM-автоматизация и возврат брошенных корзин" : "CRM Automation & Abandoned Cart Recovery",
+              challenge: isRu
+                ? "Яндекс.Метрика показывала, что 45% пользователей бросали заказ до оплаты. Нужно было вернуть эти лиды без ручной работы Sales."
+                : "Yandex Metrica data showed 45% of users who started the booking flow abandoned before payment. We needed to recover these leads without manual sales follow-up.",
+              whatIDid: isRu
+                ? "Интегрировал Zoho CRM для отслеживания поведения и автоматических цепочек: Цепочка 1: Ввёл маршрут, машину не выбрал. Триггер: Пользователь ввёл маршрут и ушёл с сайта. Действие: Email через 15 минут — «Завершите бронирование». Цепочка 2: Выбрал машину, не оплатил. Триггер: Пользователь выбрал машину, но не перешёл к оплате. Действие: Email через 30 минут + промокод 10% + SMS. Цепочка 3: Дошёл до оплаты и ушёл. Триггер: Пользователь открыл страницу оплаты, но не завершил. Действие: Email через 1 час со ссылкой на онлайн-чат. Логика сегментации: Дорогие маршруты (аэропорт, многодневные поездки) получали телефонный звонок + email. Недорогие — только email для экономии времени Sales. Ключевое решение: A/B-тестировали скидки — 5%, 10%, 15% — выяснили, что 10% оптимально (выше возврат без сильного ущерба марже). Также тестировали тайминг SMS — мгновенная SMS для дорогих заказов работала в 2 раза лучше отложенной."
+                : "Integrated Zoho CRM with the booking platform to track user behavior and trigger automated campaigns: Drip Campaign 1: Route Entered, No Vehicle Selected — Trigger: User entered route but left site. Action: Email sent 15 minutes later — 'Complete your booking and save time'. Drip Campaign 2: Vehicle Selected, No Payment — Trigger: User selected vehicle but didn't proceed to payment. Action: Email sent 30 minutes later + 10% discount code + SMS reminder. Drip Campaign 3: Payment Page Abandoned — Trigger: User reached payment page but didn't complete transaction. Action: Email sent 1 hour later with live chat link for support. Segmentation logic: High-value routes (airport transfers, multi-day trips) received phone follow-up in addition to email. Low-value routes got email-only sequences to optimize sales team time. Key Decision: We A/B tested discount thresholds — 5%, 10%, 15% — and found that 10% was the sweet spot (higher recovery rate without eroding margins). We also tested SMS timing and found that immediate SMS for high-value bookings had 2x higher response rates than delayed follow-up.",
+              outcome: isRu
+                ? "18% возврата брошенных корзин. Примерно $180k в год возвращённой выручки от пользователей, которые иначе ушли бы к конкурентам."
+                : "18% abandoned cart recovery rate. Estimated $180k/year in recovered revenue from users who would have otherwise booked with competitors."
             },
             {
               number: "03",
-              title: "Technical Rescue & Test Automation",
-              challenge: "The original dev team had delivered a broken codebase. No architectural patterns (SOLID ignored), no test coverage, frequent regressions. QA was in burnout mode — 80% of their time spent on manual regression testing.",
-              whatIDid: "Step 1: Replace the dev team — Hired senior engineers who understood modular architecture, separation of concerns, and test-driven development. Step 2: Implement E2E tests (Playwright + Selenium) — Full booking flow tested across Chrome, Safari, Firefox, and Edge. Payment gateway integration tested with Stripe test cards. CRM triggers validated (abandoned cart emails firing correctly). Step 3: Code refactoring — Introduced service layer architecture (business logic separated from controllers). Extracted payment gateway logic into abstraction layer (easier to swap providers). Database query optimization (reduced booking creation time from 8 seconds to 1.2 seconds). Coverage metrics: Frontend: 85% test coverage (critical UI flows). Backend: 75% test coverage (business logic, API endpoints). Key Decision: I prioritized E2E tests over unit tests initially because the biggest risk was user-facing regressions (broken booking flow = lost revenue). Unit tests were added incrementally as we refactored modules.",
-              outcome: "QA workload dropped from 20 hours/week on regression to 8 hours/week (-60%). Release velocity increased by 40% because we could ship confidently without manual re-testing of the entire app. Production bugs dropped by 87% (~15 bugs/month → <2 bugs/month)."
+              title: isRu ? "Технический rescue и автотестирование" : "Technical Rescue & Test Automation",
+              challenge: isRu
+                ? "Первые разработчики сдали сломанный код. Без архитектуры (SOLID игнорировали), без тестов, куча регрессий. QA выгорал — 80% времени на ручную регрессию."
+                : "The original dev team had delivered a broken codebase. No architectural patterns (SOLID ignored), no test coverage, frequent regressions. QA was in burnout mode — 80% of their time spent on manual regression testing.",
+              whatIDid: isRu
+                ? "Шаг 1: Заменил команду разработчиков. Нанял senior-инженеров, которые понимают модульную архитектуру и разработку через тесты. Шаг 2: Внедрил E2E-тесты (Playwright + Selenium). Полный процесс бронирования протестирован на Chrome, Safari, Firefox, Edge. Интеграция с платёжным шлюзом протестирована (тестовые карты Stripe). Триггеры CRM проверены (письма о брошенных корзинах отправляются корректно). Шаг 3: Рефакторинг кода. Внедрил service layer (бизнес-логика отделена от контроллеров). Вынес логику платёжного шлюза в отдельный слой (легче менять провайдеров). Оптимизировал запросы к БД (создание заказа: 8 секунд → 1.2 секунды). Покрытие тестами: Frontend: 85% (критичные UI-процессы). Backend: 75% (бизнес-логика, API). Ключевое решение: Сначала приоритизировал E2E-тесты, а не unit-тесты, потому что главный риск — регрессии на стороне пользователя (сломанный процесс бронирования = потерянные деньги). Unit-тесты добавлял постепенно."
+                : "Step 1: Replace the dev team — Hired senior engineers who understood modular architecture, separation of concerns, and test-driven development. Step 2: Implement E2E tests (Playwright + Selenium) — Full booking flow tested across Chrome, Safari, Firefox, and Edge. Payment gateway integration tested with Stripe test cards. CRM triggers validated (abandoned cart emails firing correctly). Step 3: Code refactoring — Introduced service layer architecture (business logic separated from controllers). Extracted payment gateway logic into abstraction layer (easier to swap providers). Database query optimization (reduced booking creation time from 8 seconds to 1.2 seconds). Coverage metrics: Frontend: 85% test coverage (critical UI flows). Backend: 75% test coverage (business logic, API endpoints). Key Decision: I prioritized E2E tests over unit tests initially because the biggest risk was user-facing regressions (broken booking flow = lost revenue). Unit tests were added incrementally as we refactored modules.",
+              outcome: isRu
+                ? "Нагрузка на QA: 20 часов/неделю → 8 часов/неделю (минус 60%). Скорость релизов +40%, потому что выкатывали уверенно без ручного пере-тестирования всего. Баги в продакшене: ~15/месяц → <2/месяц (минус 87%)."
+                : "QA workload dropped from 20 hours/week on regression to 8 hours/week (-60%). Release velocity increased by 40% because we could ship confidently without manual re-testing of the entire app. Production bugs dropped by 87% (~15 bugs/month → <2 bugs/month)."
             },
             {
               number: "04",
-              title: "Mobile Optimization (UX + Performance)",
-              challenge: "60% of traffic was mobile, but bounce rate was 58%. Users were landing, seeing slow load times and cluttered UI, and leaving immediately.",
-              whatIDid: "UX changes: Simplified navigation — Menu reduced from 7 items to 3 (Book, My Trips, Support). Progressive disclosure — Show only essential info first (route input), reveal details (vehicle options) after initial input. Touch-friendly targets — All buttons increased to 56px height (exceeds Apple's 44px recommendation). Progress indicator — 4-step progress bar shows users exactly where they are in the booking flow. Performance optimizations: Lazy loading — Images and non-critical JS loaded only when scrolled into view. Image format optimization — WebP format with fallback to JPG (60% smaller file sizes). Code splitting — JavaScript bundle reduced from 840KB to 320KB (only load code needed for current page). CDN integration — Static assets served via Cloudflare CDN. Key Decision: We used PageSpeed Insights as the north star metric. Every design decision was evaluated against: 'Will this improve Core Web Vitals?'",
-              outcome: "PageSpeed score: 42 → 87 (mobile), 96 (desktop). Mobile bounce rate: 58% → 40% (-31%). Mobile conversion rate: +14% (more users completing bookings on mobile)."
+              title: isRu ? "Мобильная оптимизация (UX + производительность)" : "Mobile Optimization (UX + Performance)",
+              challenge: isRu
+                ? "60% трафика — мобильные, но bounce rate 58%. Пользователи заходили, видели медленную загрузку и перегруженный интерфейс, уходили."
+                : "60% of traffic was mobile, but bounce rate was 58%. Users were landing, seeing slow load times and cluttered UI, and leaving immediately.",
+              whatIDid: isRu
+                ? "UX-изменения: Упростил навигацию — Меню с 7 пунктов до 3 (Забронировать, Мои поездки, Поддержка). Прогрессивное раскрытие — Показываем только важное сначала (ввод маршрута), детали раскрываются после первого шага. Touch-friendly элементы — Все кнопки 56px высоты (больше рекомендации Apple 44px). Прогресс-бар — 4 шага, пользователь видит, где он находится. Оптимизация производительности: Lazy loading — Картинки и некритичный JS загружаются только при прокрутке. Оптимизация изображений — WebP с fallback на JPG (на 60% меньше вес). Code splitting — JS-бандл: 840KB → 320KB (загружается только код для текущей страницы). CDN — Статика раздаётся через Cloudflare CDN. Ключевое решение: Использовал PageSpeed Insights как главную метрику. Каждое решение оценивалось через: «Улучшит ли это Core Web Vitals?»"
+                : "UX changes: Simplified navigation — Menu reduced from 7 items to 3 (Book, My Trips, Support). Progressive disclosure — Show only essential info first (route input), reveal details (vehicle options) after initial input. Touch-friendly targets — All buttons increased to 56px height (exceeds Apple's 44px recommendation). Progress indicator — 4-step progress bar shows users exactly where they are in the booking flow. Performance optimizations: Lazy loading — Images and non-critical JS loaded only when scrolled into view. Image format optimization — WebP format with fallback to JPG (60% smaller file sizes). Code splitting — JavaScript bundle reduced from 840KB to 320KB (only load code needed for current page). CDN integration — Static assets served via Cloudflare CDN. Key Decision: We used PageSpeed Insights as the north star metric. Every design decision was evaluated against: 'Will this improve Core Web Vitals?'",
+              outcome: isRu
+                ? "PageSpeed: 42 → 87 (mobile), 96 (desktop). Mobile bounce rate: 58% → 40% (минус 31%). Mobile conversion: +14%"
+                : "PageSpeed score: 42 → 87 (mobile), 96 (desktop). Mobile bounce rate: 58% → 40% (-31%). Mobile conversion rate: +14% (more users completing bookings on mobile)."
             },
             {
               number: "05",
-              title: "Analytics & Data-Driven Optimization",
-              challenge: "The client had Google Analytics installed but no custom event tracking. They could see traffic but not user behavior inside the booking flow.",
-              whatIDid: "Custom event tracking: Route searched, Vehicle viewed, Add-on clicked, Payment initiated, Booking completed. Funnel visualization: Homepage → Route Selection → Vehicle Selection → Payment → Confirmation. We discovered that 62% of users dropped off at the payment step. Root cause analysis showed users expected more payment options (credit card only at launch). Solution: Added Apple Pay and Google Pay → payment abandonment dropped by 19%. Cohort analysis: B2C users book on average 7 days in advance (spontaneous travel). B2B users book on average 21 days in advance (planned group tours). Average B2C transaction: $285. Average B2B transaction: $1,240. Insight: B2B users were more price-sensitive to last-minute bookings. We implemented tiered pricing — book 30+ days in advance, get 15% discount. This smoothed demand and increased early bookings. A/B testing: Showing price upfront vs hiding until vehicle selection → Upfront pricing increased conversion by 12%. Adding customer reviews to vehicle cards → No measurable impact (removed to simplify UI).",
-              outcome: "Data-driven decisions replaced guesswork. Every feature change was validated with analytics before full rollout."
+              title: isRu ? "Аналитика и data-driven решения" : "Analytics & Data-Driven Optimization",
+              challenge: isRu
+                ? "У клиента была Google Analytics, но без кастомных событий. Видели трафик, но не поведение внутри процесса бронирования."
+                : "The client had Google Analytics installed but no custom event tracking. They could see traffic but not user behavior inside the booking flow.",
+              whatIDid: isRu
+                ? "Кастомные события: Поиск маршрута, Просмотр машины, Клик по доп. услугам, Инициирование оплаты, Завершение бронирования. Визуализация воронки: Главная → Маршрут → Машина → Оплата → Подтверждение. Обнаружили, что 62% уходили на этапе оплаты. Причина: пользователи ожидали больше способов оплаты (была только карта). Решение: Добавили Apple Pay и Google Pay → отказы на оплате упали на 19%. Когортный анализ: B2C бронируют за 7 дней (спонтанные поездки). B2B бронируют за 21 день (запланированные туры). Средний чек B2C: $285. Средний чек B2B: $1,240. Инсайт: B2B клиенты более чувствительны к last-minute ценам. Внедрили ступенчатое ценообразование — бронь за 30+ дней = скидка 15%. Это сгладило спрос и увеличило ранние бронирования. A/B-тесты: Показывать цену сразу vs скрывать до выбора машины → Цена сразу +12% к конверсии. Добавить отзывы на карточки машин → Нулевое влияние (убрали для упрощения)."
+                : "Custom event tracking: Route searched, Vehicle viewed, Add-on clicked, Payment initiated, Booking completed. Funnel visualization: Homepage → Route Selection → Vehicle Selection → Payment → Confirmation. We discovered that 62% of users dropped off at the payment step. Root cause analysis showed users expected more payment options (credit card only at launch). Solution: Added Apple Pay and Google Pay → payment abandonment dropped by 19%. Cohort analysis: B2C users book on average 7 days in advance (spontaneous travel). B2B users book on average 21 days in advance (planned group tours). Average B2C transaction: $285. Average B2B transaction: $1,240. Insight: B2B users were more price-sensitive to last-minute bookings. We implemented tiered pricing — book 30+ days in advance, get 15% discount. This smoothed demand and increased early bookings. A/B testing: Showing price upfront vs hiding until vehicle selection → Upfront pricing increased conversion by 12%. Adding customer reviews to vehicle cards → No measurable impact (removed to simplify UI).",
+              outcome: isRu
+                ? "Data-driven решения заменили догадки. Каждое изменение валидировалось аналитикой перед полным запуском."
+                : "Data-driven decisions replaced guesswork. Every feature change was validated with analytics before full rollout."
             }
           ]
         },
 
-        stakeholder: {
-            desc: "Worked closely with the sales team to understand their pain points and ensure the new B2B portal met the needs of their agency partners (NET30 terms, bulk uploads, commission tracking). Weekly demos kept stakeholders aligned on progress."
-        },
-
         results: {
-          desc: "The booking engine transformed Deluxe Limo from a manual service business into a scalable platform.",
-          businessImpact: [
+          desc: isRu ? "Автоматизация превратила Deluxe Limo из ручного сервиса в масштабируемую платформу." : "The booking engine transformed Deluxe Limo from a manual service business into a scalable platform.",
+          businessImpact: isRu ? [
+            "B2C-заказы: +85% (автоматизация снизила трение, быстрое подтверждение)",
+            "+3 B2B-партнёра (отдельный портал позволил агентствам работать самостоятельно)",
+            "~$180k/год от возврата брошенных корзин (CRM-автоматизация монетизировала упущенные лиды)",
+            "Sales: 60% времени освобождено (не тратят время на обработку заказов, фокусируются на B2B)",
+            "Масштабируемость: 500+ заказов/месяц (vs 120/месяц при ручной обработке)"
+          ] : [
             "B2C bookings increased by 85% — Automated flow reduced friction, faster confirmation",
             "+3 B2B agency partnerships — Dedicated portal enabled self-service booking",
             "~$180k/year from abandoned cart recovery — CRM automation monetized previously lost leads",
@@ -990,17 +1024,30 @@ const getDATA = (lang) => {
             "Scalability: 500+ bookings/month — vs 120/month manual capacity before automation"
           ],
           stats: [
-            { val: "2.1% → 3.4%", label: "Conversion Rate (+62%)" },
-            { val: "58% → 40%", label: "Mobile Bounce Rate (-31%)" },
-            { val: "18%", label: "Abandoned Cart Recovery" },
-            { val: "20h → 8h", label: "QA Regression Time (-60%)" },
-            { val: "~15 → <2", label: "Production Bugs/Month (-87%)" },
-            { val: "42 → 87", label: "PageSpeed Mobile (+107%)" }
+            { val: "2.1% → 3.4%", label: isRu ? "Конверсия (+62%)" : "Conversion Rate (+62%)" },
+            { val: "58% → 40%", label: isRu ? "Mobile bounce rate (минус 31%)" : "Mobile Bounce Rate (-31%)" },
+            { val: "18%", label: isRu ? "Возврат брошенных корзин" : "Abandoned Cart Recovery" },
+            { val: "20h → 8h", label: isRu ? "QA-время на регрессию (минус 60%)" : "QA Regression Time (-60%)" },
+            { val: "~15 → <2", label: isRu ? "Баги в продакшене/месяц (минус 87%)" : "Production Bugs/Month (-87%)" },
+            { val: "42 → 87", label: isRu ? "PageSpeed (mobile) (+107%)" : "PageSpeed Mobile (+107%)" }
           ]
         },
 
         learnings: {
-          blocks: [
+          blocks: isRu ? [
+            {
+              text: "Этот проект показал, что автоматизация — это не просто замена ручного труда. Это возможность роста, которого раньше не было. Deluxe Limo не мог масштабироваться дальше 120 заказов/месяц, потому что каждый заказ требовал человека. Автоматизировав процесс, мы не просто сэкономили на зарплатах — мы убрали потолок роста.",
+              align: "left"
+            },
+            {
+              text: "Также понял силу CRM-автоматизации для возврата выручки. Цепочки писем о брошенных корзинах — это не «приятный маркетинг», а прямой revenue driver на $180k/год с почти нулевыми затратами. На технической стороне проект подтвердил, что автотесты — это мультипликатор скорости команды. Первая команда думала, что тесты — это «лишняя работа». Новая команда понимала, что тесты — это страховка от регрессий, которая позволяет двигаться быстро без риска всё сломать.",
+              align: "left"
+            },
+            {
+              text: "Наконец, проект показал важность mobile-first подхода. Когда 60% трафика — мобильные, мобилка не может быть «на потом». Производительность и UX на мобилках — это критично для конверсии.",
+              align: "right"
+            }
+          ] : [
             {
               text: "This project taught me that automation isn't just about replacing manual work — it's about unlocking growth that wasn't possible before. Deluxe Limo couldn't scale beyond 120 bookings/month because every booking required human intervention. By automating the workflow, we didn't just save labor costs — we removed the ceiling on how many bookings the business could handle.",
               align: "left"
@@ -1098,7 +1145,7 @@ const Navbar = ({ goHome, language, setLanguage, t }) => {
           <span className="text-white font-bold tracking-tight text-lg group-hover:text-blue-500 transition-colors">EGOR ANDRIENKO</span>
           <span className="text-[10px] text-neutral-500 font-mono uppercase tracking-widest">Technical PM</span>
         </button>
-        <div className="flex items-center gap-4 md:gap-8">
+        <div className="flex items-center gap-4 md:gap-6">
           <button
             onClick={toggleLanguage}
             className="flex items-center gap-2 text-sm font-medium text-neutral-400 hover:text-white transition-colors"
@@ -1106,8 +1153,35 @@ const Navbar = ({ goHome, language, setLanguage, t }) => {
             <Languages size={16} />
             <span className="uppercase">{language}</span>
           </button>
-          <button onClick={goHome} className="hidden md:block text-sm font-medium text-neutral-400 hover:text-white transition-colors">{t.works}</button>
-          <a href="mailto:egorandrienko184@gmail.com" className="text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors uppercase text-xs">{t.contact}</a>
+
+          <a
+            href="mailto:egorandrienko184@gmail.com"
+            className="hidden md:flex items-center gap-2 text-sm font-medium text-neutral-400 hover:text-white transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Mail size={16} />
+            <span>Email</span>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/egorandrienko/"
+            className="hidden md:flex items-center gap-2 text-sm font-medium text-neutral-400 hover:text-white transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Linkedin size={16} />
+            <span>LinkedIn</span>
+          </a>
+
+          <a
+            href="/cv.pdf"
+            download
+            className="flex items-center gap-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors"
+          >
+            <Download size={16} />
+            <span>CV</span>
+          </a>
         </div>
       </div>
     </nav>
@@ -1251,11 +1325,21 @@ const CaseStudyPage = ({ project, goBack, onNext, t }) => {
         </div>
       </header>
 
-      {/* 2. HERO VISUAL */}
+      {/* 2. HERO VISUAL - VIDEO */}
       <section className="max-w-7xl mx-auto px-4 md:px-6 mb-32">
-         <WindowFrame title={project.title + " - Overview"} className="h-[400px] md:h-[600px]">
-            {project.visuals.hero}
-         </WindowFrame>
+         <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-neutral-800 bg-neutral-900">
+            <video
+              className="w-full h-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+            >
+              <source src={`/videos/${project.slug}.mp4`} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+         </div>
       </section>
 
       {/* 3. SUMMARY, CONTRIBUTION & METRICS */}
@@ -1377,28 +1461,7 @@ const CaseStudyPage = ({ project, goBack, onNext, t }) => {
         </section>
       )}
 
-      {/* 7. STAKEHOLDER ENGAGEMENT */}
-      <section className="bg-neutral-900 border-y border-neutral-800 py-24 mb-32">
-         <div className="max-w-7xl mx-auto px-4 md:px-6">
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-12">
-                {t.stakeholderEngagement}
-            </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-               <div className="lg:col-span-7">
-                  <p className="text-2xl md:text-3xl text-white leading-relaxed">
-                    "{project.stakeholder.desc}"
-                  </p>
-               </div>
-               <div className="lg:col-span-5 flex justify-center">
-                   <div className="w-full h-64 bg-[#0A0A0A] rounded-xl border border-neutral-800 flex items-center justify-center p-8">
-                        <Users size={64} className="text-neutral-700 mb-4" />
-                   </div>
-               </div>
-            </div>
-         </div>
-      </section>
-
-      {/* 8. RESULTS */}
+      {/* 7. RESULTS */}
       <section className="max-w-7xl mx-auto px-4 md:px-6 mb-32 fade-in-section">
         <h2 className="text-6xl md:text-9xl font-bold tracking-tighter text-white leading-none mb-16">
             {t.results}
